@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/02/13 10:11:39 by deordone         ###   ########.fr        #
+#    Updated: 2024/02/13 10:34:55 by deordone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ NAME        = philo
 OS = $(shell uname)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_PATH) -MMD -MF $(@:.o=.d)
+THREADS = -lpthread
 
 # ╔══════════════════════════════════════════════════════════════════════════╗ #  
 #                               SOURCES                                        #
@@ -57,7 +58,7 @@ all: header $(NAME)
 -include $(DEPS)
 $(NAME): $(OBJECTS)
 	@printf "$(CYAN)$@ Compiled$(NC)\n";
-	@$(CC) $(CFLAGS) $^ -o $(NAME)
+	@$(CC) $(CFLAGS) $^ -o $(NAME) $(THREADS)
 
 $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER) Makefile
 		@printf "$(CYAN)Compiling $@$(NC)\n";
