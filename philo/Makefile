@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/02/13 10:34:55 by deordone         ###   ########.fr        #
+#    Updated: 2024/02/17 13:33:36 by deordone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,10 @@ SOURCES_PATH    = ./src
 OBJECTS_PATH    = ./obj
 INCLUDE_PATH    = ./inc
 
-HEADER = $(INCLUDE_PATH)/philosophers.h
-SOURCES = 
+HEADER += $(INCLUDE_PATH)/philosophers.h
+HEADER += $(INCLUDE_PATH)/ph_macros.h
+HEADER += $(INCLUDE_PATH)/ph_struct.h
+SOURCES = philo.c ph_lst.c ph_error.c 
 
 # ╔══════════════════════════════════════════════════════════════════════════╗ #  
 #                               OBJECTS                                        #

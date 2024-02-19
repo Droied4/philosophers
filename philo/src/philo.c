@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:27:21 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/14 18:00:17 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/02/17 13:36:34 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,16 @@ int	main(int argc, char **argv)
 		//              una vez comprobado debo hacer un atoi y comprobar el maximo y minimo y tambien
 		//              guardar todo en la estructura data
 		ft_constructor(argc, argv, &data);
-		philo = ft_phlst(data);
+		philo = ft_phlst(&data);
 	}
 	else
 	{
 		printf("philo : incorrect number of arguments");
 		// ft_dprintf(2, "philo : incorrect number of arguments");
 	}
+	(void)philo;
 	//      printf("[%i][%i][%i]", philo->prev->index, philo->index,
-		philo->next->index);
+	//	philo->next->index;
 	//      printf("o <- o -> o");
 	return (0);
 }
