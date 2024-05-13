@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:27:21 by deordone          #+#    #+#             */
-/*   Updated: 2024/05/13 16:27:01 by droied           ###   ########.fr       */
+/*   Updated: 2024/05/13 18:46:44 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,14 @@
 int	main(int argc, char **argv)
 {
 	t_ph_info	data;
-	t_philo		**philo;
 
 	if (argc == 6 || argc == 5)
 	{
         if (parser(argc, argv, &data) < 0)
-            printf("philo : invalid digit");
+            printf("philo : invalid digit\n");
+        
 	}
 	else
-		printf("philo : incorrect number of arguments");
-	(void)philo;
-	//      printf("[%i][%i][%i]", philo->prev->index, philo->index,
-	//	philo->next->index;
-	//      printf("o <- o -> o");
+		printf("philo : incorrect number of arguments\n");
 	return (0);
 }
