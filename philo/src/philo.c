@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:27:21 by deordone          #+#    #+#             */
-/*   Updated: 2024/05/13 16:22:00 by droied           ###   ########.fr       */
+/*   Updated: 2024/05/13 16:27:01 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	if (argc == 6 || argc == 5)
 	{
         if (parser(argc, argv, &data) < 0)
-            printf("no funca");
+            printf("philo : invalid digit");
 	}
 	else
 		printf("philo : incorrect number of arguments");
