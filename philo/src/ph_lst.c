@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:00:40 by carmeno           #+#    #+#             */
-/*   Updated: 2024/02/14 18:00:56 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/05/13 15:19:19 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 t_philo	**ft_phlst(t_ph_info *data)
 {
 	int		i;
+    int     index;
 	t_philo	*node;
 	t_philo	**lst;
 	t_philo	*lstnode;
 
 	index = 0;
 	i = -1;
-	while (++i < data->n_philo)
+	while (++i < (int)data->n_philo)
 	{
 		// me crea un nodo
 		node = ft_newph(++index);

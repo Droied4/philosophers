@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:29:22 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/17 13:31:04 by deordone         ###   ########.fr       */
+/*   Updated: 2024/05/13 16:23:25 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 typedef struct s_ph_info
 {
-        unsigned int    n_philo;
-        unsigned int    time2_die;
-        unsigned int    time2_eat;
-        unsigned int    time2_sleep;
-        unsigned int    max_eat;
+        long    n_philo;
+        long   time2_die;
+        long    time2_eat;
+        long    time2_sleep;
+        long    max_eat;
 }       t_ph_info;
 
 typedef struct s_philo

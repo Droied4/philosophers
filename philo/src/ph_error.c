@@ -6,14 +6,14 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:59:57 by carmeno           #+#    #+#             */
-/*   Updated: 2024/02/14 18:00:01 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/05/13 15:20:37 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
+/*
 void	ft_clear_phlst(t_philo **lst)
 {
 	// liberar memoria xd
 	exit(1);
-}
+}*/
