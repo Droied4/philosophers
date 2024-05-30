@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:29:22 by deordone          #+#    #+#             */
-/*   Updated: 2024/05/13 16:23:25 by droied           ###   ########.fr       */
+/*   Updated: 2024/05/30 01:57:04 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ typedef struct s_ph_info
         long    max_eat;
 }       t_ph_info;
 
+
 typedef struct s_philo
 {
-        int index;
-        int state;
-        int eat_times;
-        struct s_philo *next;
-        struct s_philo *prev;
-}       t_philo;
+	pthread_t	id;
+	
+	struct s_ph_info *info;
+}       t_all;
+
+
 
 #endif
