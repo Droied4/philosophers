@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:27:21 by deordone          #+#    #+#             */
-/*   Updated: 2024/06/01 15:15:31 by droied           ###   ########.fr       */
+/*   Updated: 2024/06/01 16:26:13 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
             printf("philo : invalid digit\n");
 			return (-1);
 		}
-		the_last_supper(&p); 
+		init(&p); 
 	}
 	else
 		printf("philo : incorrect number of arguments\n");

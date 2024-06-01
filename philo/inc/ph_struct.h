@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:29:22 by deordone          #+#    #+#             */
-/*   Updated: 2024/06/01 15:44:16 by droied           ###   ########.fr       */
+/*   Updated: 2024/06/01 16:36:52 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,14 @@ typedef struct s_socrates
 	int			state;
 	int 		left_spoon_id;
 	int 		right_spoon_id;
-	long long 	last_meal;
+	int 		last_meal;
 	pthread_t	thread_id;
 } 	t_socrates;
 
 typedef struct s_philo
 {
 	struct s_socrates socrates[250];
+	pthread_mutex_t mutex[250];
 	struct s_ph_info info;
 }       t_philo;
 
