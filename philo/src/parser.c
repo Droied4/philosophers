@@ -42,10 +42,11 @@ static int is_max(t_ph_info *data)
     return (0);
 }
 
-int parser(int argc, char **argv, t_ph_info *data)
+int parser(int argc, char **argv, t_philo *p)
 {
     int i; 
     int aux;
+	t_ph_info data;
 
     i = 1;
     aux = 0;
@@ -53,9 +54,10 @@ int parser(int argc, char **argv, t_ph_info *data)
         aux = is_num(argv[i++]);
     if (aux < 0)
         return (-1);
-    ft_constructor(argc, argv, data);    
-    aux = is_max(data);
+    ft_constructor(argc, argv, &data);
+    aux = is_max(&data);
     if (aux < 0)
-        return (-1);
+		return (-1);
+	p->info = data;
     return (0);
 }
