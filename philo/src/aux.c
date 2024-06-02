@@ -7,8 +7,8 @@ void print_philo(t_philo *p)
 	i = p->info.n_philo + 1;
 	while (--i)
 	{
-		printf("\nId -> %d\n", p->socrates[i].id);
-		printf("left 🥄-> %d\n", p->socrates[i].left_spoon_id);
-		printf("right 🥄-> %d\n", p->socrates[i].right_spoon_id);
+		printf("\nFilosofo 🗿 %d\n", p->socrates[i].id);
+	//	printf("left 🥄-> %d 🍝", p->socrates[i].left_spoon_id);
+		printf(" %d <- 🥄 right\n", p->socrates[i].right_spoon_id);
 	}
 }
