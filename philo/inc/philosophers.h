@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:28:14 by deordone          #+#    #+#             */
-/*   Updated: 2024/06/01 16:26:44 by droied           ###   ########.fr       */
+/*   Updated: 2024/06/03 00:53:49 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,17 @@
 # include "ph_macros.h"
 # include "ph_struct.h"
 
+/* MAIN */
+
+int destroy_all(t_table *table, int i);
+
 /* PARSER */
-int parser(int argc, char **argv, t_philo *p);
+int parser(int ac, char **av, t_table *table);
 
 /* INIT */
-void init(t_philo *p);
+int init(t_table *p);
 
 /* AUX */
-void print_philo(t_philo *p);
+void print_philo(t_table *p);
 
 #endif

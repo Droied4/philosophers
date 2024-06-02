@@ -1,33 +1,39 @@
 #include "philosophers.h"
 
-static void     ft_constructor(int argc, char **argv, t_ph_info *data)
+static void     fill_info(int ac, char **av, t_info *info)
 {
-        data->n_philo = atol(argv[1]);
-        data->time2_die = atol(argv[2]);
-        data->time2_eat = atol(argv[3]);
-        data->time2_sleep = atol(argv[4]);
-        if (argc == 6)
-            data->max_eat = atol(argv[5]);
+        info->n_philo = atol(av[1]);
+        info->time2_die = atol(av[2]);
+        info->time2_eat = atol(av[3]);
+        info->time2_sleep = atol(av[4]);
+        if (ac == 6)
+            info->max_eat = atol(av[5]);
         else
-            data->max_eat = -1;
+            info->max_eat = -1;
 }
 
-static int is_num(char *num)
+static int is_num(char **num)
 {
     int i;
-
-    i = 0;
-    while(num[i])
-    {
-        if (num[i] > 47 && num[i] < 58)
-            i++;
-        else 
-            return (-1);
-    }
+    int j;
+	
+	i = 1;
+	while (num[i])
+	{
+		j = 0;
+    	while(num[i][j])
+    	{
+			if (num[i][j] > 47 && num[i][j] < 58)
+         		j++;
+			else 
+          	  return (-1);
+   		 }
+		i++;
+	}
     return (0);
 }
 
-static int is_max(t_ph_info *data)
+static int is_max(t_info *data)
 {
     if (!(data->n_philo <= INT_MAX && data->n_philo >= INT_MIN))
             return (-1);
@@ -42,22 +48,15 @@ static int is_max(t_ph_info *data)
     return (0);
 }
 
-int parser(int argc, char **argv, t_philo *p)
+int parser(int ac, char **av, t_table *table)
 {
-    int i; 
-    int aux;
-	t_ph_info data;
+	t_info info;
 
-    i = 1;
-    aux = 0;
-    while (aux >= 0 && argv[i])
-        aux = is_num(argv[i++]);
-    if (aux < 0)
-        return (-1);
-    ft_constructor(argc, argv, &data);
-    aux = is_max(&data);
-    if (aux < 0)
+	if (is_num(av) < 0)
 		return (-1);
-	p->info = data;
+    fill_info(ac, av, &info);
+    if (is_max(&info) < 0)
+		return (-1);
+	table->info = info;
     return (0);
 }

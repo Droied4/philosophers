@@ -6,27 +6,47 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:27:21 by deordone          #+#    #+#             */
-/*   Updated: 2024/06/01 16:26:13 by droied           ###   ########.fr       */
+/*   Updated: 2024/06/03 00:55:17 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 #include <stdio.h>
 
-int	main(int argc, char **argv)
+int destroy_all(t_table *table, int j)
 {
-	t_philo p;
+	int i;
 
-	if (argc == 6 || argc == 5)
+	i = -1;
+	if (table->f)
 	{
-        if (parser(argc, argv, &p) < 0)
+		while (++i < j)
+			pthread_mutex_destroy(&table->f[i]);
+		free(table->f);
+		table->f = NULL;
+	}
+	if (table->p)
+		free(table->p);
+	return (-1);
+}
+
+int	main(int ac, char **av)
+{
+	t_table table;
+
+	if (ac == 6 || ac == 5)
+	{
+        if (parser(ac, av, &table) < 0)
 		{
             printf("philo : invalid digit\n");
-			return (-1);
+			return (1);
 		}
-		init(&p); 
+		init(&table); 
 	}
 	else
+	{
 		printf("philo : incorrect number of arguments\n");
+		return (1);
+	}
 	return (0);
 }

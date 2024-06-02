@@ -1,14 +1,15 @@
 #include "philosophers.h"
 
-void print_philo(t_philo *p)
+void print_philo(t_table *table)
 {
 	int i;
 
-	i = p->info.n_philo + 1;
+	i = table->info.n_philo + 1;
 	while (--i)
 	{
-		printf("\nFilosofo 🗿 %d\n", p->socrates[i].id);
-	//	printf("left 🥄-> %d 🍝", p->socrates[i].left_spoon_id);
-		printf(" %d <- 🥄 right\n", p->socrates[i].right_spoon_id);
+		printf("\nFilosofo 🗿 %d\n", table->p[i].id);
+		printf("left 🥄-> %p 🍝", table->p[i].left_fork);
+		printf(" %p <- 🥄 right\n", table->p[i].right_fork);
 	}
 }
+

@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:29:22 by deordone          #+#    #+#             */
-/*   Updated: 2024/06/02 02:57:09 by droied           ###   ########.fr       */
+/*   Updated: 2024/06/02 22:11:47 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,31 @@
 # define PH_STRUCT_H
 # include "philosophers.h"
 
-typedef struct s_ph_info
+typedef struct s_info
 {
         long	n_philo;
         long	time2_die;
         long	time2_eat;
         long	time2_sleep;
         long	max_eat;
-}       t_ph_info;
+}       t_info;
 
-typedef struct s_socrates
-{
-	int 		id;
-	int			state;
-	int 		left_spoon_id;
-	int 		right_spoon_id;
-	int 		last_meal;
-	pthread_t	thread_id;
-} 	t_socrates;
+typedef pthread_mutex_t t_fork;
 
 typedef struct s_philo
 {
-	struct s_socrates socrates[250];
-	pthread_mutex_t mutex[250];
-	struct s_ph_info info;
-}       t_philo;
+	int 		id;
+	int			state;
+	pthread_t	thread_id;
+	t_fork		*left_fork;
+	t_fork		*right_fork;
+} 	t_philo;
+
+typedef struct s_table
+{
+	struct s_philo	*p;
+	t_fork 			*f;
+	struct s_info	info;
+}       t_table;
 
 #endif
