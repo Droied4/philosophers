@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:28:14 by deordone          #+#    #+#             */
-/*   Updated: 2024/06/03 00:53:49 by droied           ###   ########.fr       */
+/*   Updated: 2024/06/03 13:42:59 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int parser(int ac, char **av, t_table *table);
 int init(t_table *p);
 
 /* AUX */
+void print_forks(t_table *p);
 void print_philo(t_table *p);
 
 #endif
