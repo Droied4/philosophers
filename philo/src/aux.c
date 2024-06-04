@@ -8,6 +8,28 @@ int	get_mstime(void)
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
+int set_state(t_philo *p, int state)
+{
+	int time;
+	time = get_mstime();
+	if (state == EATING)
+	{
+		p->state = EATING;
+		printf("%i The philosopher 🗿 %d\n is \033[34mEating\033[0m 🍝\n", time - p->last_noodle, p->id);
+	}
+	else if (state == THINKING)
+	{
+		p->state = THINKING;
+		printf("%i The philosopher 🗿 %d\n is \033[33mThinking\033[0m 🤔\n", time - p->last_noodle, p->id);
+	}
+	else if (state == SLEEPING)
+	{
+		p->state = SLEEPING;
+		printf("%i The philosopher 🗿 %d\n is \033[31mSleeping\033[0m 😴\n", time - p->last_noodle, p->id);
+	}
+	return (time);
+}
+
 void print_forks(t_table *table)
 {
 

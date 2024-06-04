@@ -1,40 +1,59 @@
 #include "philosophers.h"
 
+static void eating(t_philo *p)
+{
+	p->last_noodle = get_mstime();
+	p->foods++;
+	set_state(p, EATING);
+    usleep(p->info.time2_eat);
+}
+
 static void zzz(t_philo *p)
 {
-	pthread_mutex_unlock(p->right_fork);
+	set_state(p, SLEEPING);
 	pthread_mutex_unlock(p->left_fork);
+	pthread_mutex_unlock(p->right_fork);
 	usleep(p->info.time2_sleep);
 }
 
-static void pair_philos(t_philo *p)
+static void take_forks(t_philo *p, int i)
 {
-	pthread_mutex_lock(p->left_fork);
-	printf("The philosopher -> %d \n with ID -> %ld take the %p fork\n", p->id, p->thread_id, p->left_fork);
-	pthread_mutex_lock(p->right_fork);
-	printf("The philosopher -> %d \n with ID -> %ld take the %p fork\n", p->id, p->thread_id, p->right_fork);
+	if (i == 2)
+	{
+		pthread_mutex_lock(p->left_fork);
+		printf("%i The philosopher 🗿 %d\n take the left fork 🍴\n", get_mstime() - p->last_noodle, p->id);
+		pthread_mutex_lock(p->right_fork);
+		printf("%i The philosopher 🗿 %d\n take the right fork 🍴\n", get_mstime() - p->last_noodle, p->id);
+	}
+	else
+	{
+		pthread_mutex_lock(p->right_fork);
+		printf("%i The philosopher 🗿 %d\n take the right fork 🍴\n", get_mstime() - p->last_noodle, p->id);
+		pthread_mutex_lock(p->left_fork);
+		printf("%i The philosopher 🗿 %d\n take the left fork 🍴\n", get_mstime() - p->last_noodle, p->id);
+	}
 }
 
-static void odd_philos(t_philo *p)
-{
-	pthread_mutex_lock(p->right_fork);   
-	printf("The philosopher -> %d \n with ID -> %ld take the %p fork\n", p->id, p->thread_id, p->right_fork);
-	pthread_mutex_lock(p->left_fork);
-	printf("The philosopher -> %d \n with ID -> %ld take the %p fork\n", p->id, p->thread_id, p->left_fork);
-}
-
-void *the_last_supper(void *arg)
+void *the_last_supper(void *arg) 
 {
         t_philo *p;
 
         p = (t_philo *)arg;
+		if (p->id %2 != 0)
+			usleep(1500);
         while (42)
         {
+				set_state(p, THINKING);
                 if ((p->id % 2) == 0)
-                	pair_philos(p);
+                	take_forks(p, 2);
                 else 
-                	odd_philos(p);
-                usleep(p->info.time2_eat);
+                	take_forks(p, 1);
+				/*if ((get_mstime() - time) > p->info.time2_die)
+				{
+					printf("\033[31m%i The philosopher 🗿 %d\n DIE 💀\n\033[0m", get_mstime() - time, p->id);
+					exit(2);
+				}*/
+				eating(p);
 				zzz(p);
         }
         return (NULL);

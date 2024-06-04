@@ -11,6 +11,7 @@ static int init_spider(t_table *table)
 	i = -1;
 	while(++i < philos)
 	{
+		p[i].last_noodl = get_mstime();
     	if (pthread_create(&(p[i].thread_id), NULL, the_last_supper, &p[i]) != 0)
 			return (destroy_all(table, philos));
 		usleep(100);
@@ -37,11 +38,11 @@ static int init_philo(t_table *table)
 	while(++i < philos)
 	{
 		table->p[i].id = i;
-		table->p[i].info = table->info;
 		if (i != 0)
 			table->p[i].left_fork = table->p[i - 1].right_fork;
 		table->p[i].right_fork = table->f + i;
-		table->p[i].state = THINKING;
+		table->p[i].info = table->info;
+		table->p[i].foods = 0;
 	}
 	table->p[0].left_fork = table->f + (philos - 1);
 	return (0);

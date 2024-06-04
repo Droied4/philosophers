@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:29:22 by deordone          #+#    #+#             */
-/*   Updated: 2024/06/04 01:40:32 by droied           ###   ########.fr       */
+/*   Updated: 2024/06/04 04:12:22 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_philo
 {
 	int 			id;	
 	int				state;
+	int				foods;
+	int				last_noodle;
 	pthread_t		thread_id;
 	t_fork			*left_fork;
 	t_fork			*right_fork;
