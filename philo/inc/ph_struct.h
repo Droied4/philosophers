@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:29:22 by deordone          #+#    #+#             */
-/*   Updated: 2024/06/02 22:11:47 by droied           ###   ########.fr       */
+/*   Updated: 2024/06/04 01:40:32 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,19 @@ typedef pthread_mutex_t t_fork;
 
 typedef struct s_philo
 {
-	int 		id;
-	int			state;
-	pthread_t	thread_id;
-	t_fork		*left_fork;
-	t_fork		*right_fork;
+	int 			id;	
+	int				state;
+	pthread_t		thread_id;
+	t_fork			*left_fork;
+	t_fork			*right_fork;
+	t_info			info;
 } 	t_philo;
 
 typedef struct s_table
 {
-	struct s_philo	*p;
 	t_fork 			*f;
-	struct s_info	info;
+	t_philo	*p;
+	t_info	info;
 }       t_table;
 
 #endif

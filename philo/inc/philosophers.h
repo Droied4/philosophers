@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:28:14 by deordone          #+#    #+#             */
-/*   Updated: 2024/06/03 13:42:59 by droied           ###   ########.fr       */
+/*   Updated: 2024/06/04 01:51:52 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,17 @@
 # include "ph_struct.h"
 
 /* MAIN */
-
 int destroy_all(t_table *table, int i);
+
+/* INIT */
+int init(t_table *p);
 
 /* PARSER */
 int parser(int ac, char **av, t_table *table);
 
-/* INIT */
-int init(t_table *p);
+/* DELFOS */
+
+void *the_last_supper(void *arg);
 
 /* AUX */
 void print_forks(t_table *p);

@@ -1,31 +1,4 @@
 #include "philosophers.h"
-/*
-static void eating(void *p)
-{
-	
-}
-*/
-static void *the_last_supper(void *arg)
-{
-	t_table *t;
-	int philos;
-	int i;
-
-	t = (t_table *)arg;
-	philos = (int)t->info.n_philo;
-	i = -1;
-	while (++i < philos)
-	{
-		pthread_mutex_lock(t->p[i].left_fork);
-		printf("The philosopher -> %d \n with ID -> %ld take the %p fork\n", t->p[i].id, t->p[i].thread_id, t->p[i].left_fork);
-		pthread_mutex_lock(t->p[i].right_fork);
-		printf("The philosopher -> %d \n with ID -> %ld take the %p fork\n", t->p[i].id, t->p[i].thread_id, t->p[i].right_fork);
-		//usleep(t->info.time2_eat);
-		pthread_mutex_unlock(t->p[i].right_fork);
-		pthread_mutex_unlock(t->p[i].left_fork);
-	}
-	return (NULL);
-}
 
 static int init_spider(t_table *table)
 {
@@ -38,7 +11,7 @@ static int init_spider(t_table *table)
 	i = -1;
 	while(++i < philos)
 	{
-    	if (pthread_create(&(p[i].thread_id), NULL, the_last_supper, table) != 0)
+    	if (pthread_create(&(p[i].thread_id), NULL, the_last_supper, &p[i]) != 0)
 			return (destroy_all(table, philos));
 		usleep(100);
 	}
@@ -64,6 +37,7 @@ static int init_philo(t_table *table)
 	while(++i < philos)
 	{
 		table->p[i].id = i;
+		table->p[i].info = table->info;
 		if (i != 0)
 			table->p[i].left_fork = table->p[i - 1].right_fork;
 		table->p[i].right_fork = table->f + i;
@@ -97,8 +71,8 @@ int	init(t_table *table)
 		return (-1);
 	if (init_philo(table) < 0)
 		return (-1);
-	print_forks(table);
-	print_philo(table);
+	//print_forks(table);
+	//print_philo(table);
 	if (init_spider(table) < 0)
 		return (-1);
 	return (0);
