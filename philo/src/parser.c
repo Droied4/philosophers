@@ -10,8 +10,10 @@ static void     fill_info(int ac, char **av, t_info *info)
             info->max_eat = atol(av[5]);
         else
             info->max_eat = -1;
+		info->death = malloc(sizeof(int) * 1);
+		info->death[0] = 0;
 }
-
+ 
 static int is_num(char **num)
 {
     int i;

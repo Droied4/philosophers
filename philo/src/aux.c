@@ -1,5 +1,5 @@
 #include "philosophers.h"
-
+	
 int	get_mstime(void)
 {
 	struct timeval	tv;

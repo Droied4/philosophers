@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/06/04 01:50:16 by droied           ###   ########.fr        #
+#    Updated: 2024/06/05 02:09:56 by droied           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,12 +107,9 @@ header:
  
 help: 
 	@printf "\n";  
-	@printf "	▂▃▅▆█▆▅▃▂ Commands ▂▃▅▆█▆▅▃▂\n";
-	@printf "$(BLUE)		  ► help \n";
-	@printf "		  ► clean \n";
-	@printf "		  ► fclean \n";
-	@printf "		  ► re \n";
-	@printf "		  ► author $(NC)  \n";
+	@printf "	▂▃▅▆█▆▅▃▂ Help ▂▃▅▆█▆▅▃▂\n";
+	@printf "$(BLUE)► FATAL: ThreadSanitizer: unexpected memory mapping 0x60405db08000-0x60405db09000\n";
+	@printf "		  sudo sysctl vm.mmap_rnd_bits=28 $(NC) \n";
 	@printf "\n"; 
 
 author: 
