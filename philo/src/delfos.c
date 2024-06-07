@@ -8,7 +8,7 @@ int memento_mori(t_philo *p)
 	pthread_mutex_lock(p->starvation);
 	if (*p->info.death != 0)
 		flag = -1;
-	else if ((get_mstime(p->time) - p->last_noodle) > p->info.time2_die)
+	else if ((get_mstime(p->time)) > p->info.time2_die)
 	{
 		printf("%li The philosopher 🗿 %d is %s\n", get_mstime(p->time), p->id, STR_DIE);
 		*p->info.death = 1;
