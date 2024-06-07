@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:28:14 by deordone          #+#    #+#             */
-/*   Updated: 2024/06/04 04:22:43 by droied           ###   ########.fr       */
+/*   Updated: 2024/06/07 18:57:37 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ int parser(int ac, char **av, t_table *table);
 
 /* DELFOS */
 
+int memento_mori(t_philo *p);
 void *the_last_supper(void *arg);
 
 /* AUX */
-int set_state(t_philo *p, int state);
+int set_state(t_philo *p, char *state);
 int	get_mstime(void);
 void print_forks(t_table *t);
 void print_philo(t_table *t);
