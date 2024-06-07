@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:28:14 by deordone          #+#    #+#             */
-/*   Updated: 2024/06/07 18:57:37 by droied           ###   ########.fr       */
+/*   Updated: 2024/06/07 21:48:55 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int memento_mori(t_philo *p);
 void *the_last_supper(void *arg);
 
 /* AUX */
-int set_state(t_philo *p, char *state);
-int	get_mstime(void);
-void print_forks(t_table *t);
-void print_philo(t_table *t);
+void set_state(t_philo *p, char *state);
+long    get_mstime(t_fork *time);
+long    get_time_value(void);
+void 	ft_usleep(int ms);
 
 #endif

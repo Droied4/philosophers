@@ -1,39 +1,41 @@
 #include "philosophers.h"
-	
-int	get_mstime(void)
+time_t    get_mstime(t_fork *time)
 {
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+    static time_t    start_time = 0;
+    struct timeval    t;
+	
+	pthread_mutex_lock(time);
+    if (start_time == 0)
+    {
+        gettimeofday(&t, NULL);
+        start_time = get_time_value();
+    }
+    gettimeofday(&t, NULL);
+    pthread_mutex_unlock(time);
+    return (get_time_value() - start_time);
 }
 
-int set_state(t_philo *p, char *state)
+void set_state(t_philo *p, char *state)
 {
-	int time;
-	time = get_mstime();
-	
+	pthread_mutex_lock(p->printor);
 	if (memento_mori(p) >= 0)
-	{
-		pthread_mutex_lock(p->printor);
-		printf("%i The philosopher 🗿 %d is %s\n", time - p->last_noodle, p->id, state);
-		pthread_mutex_unlock(p->printor);
-	}
-	return (time);
+		printf("%li The philosopher 🗿 %d is %s\n", get_mstime(p->time), p->id, state);
+	pthread_mutex_unlock(p->printor);
 }
 
-void print_philo(t_table *table)
+long    get_time_value(void)
 {
-	int philos;
-	int i;
+    struct timeval  timestamp;
 
-	philos = table->info.n_philo;
-	i = -1;
-	while (++i < philos)
-	{
-		printf("Filosofo 🗿 %d\n", table->p[i].id);
-		printf("left 🥄-> %p 🍝", table->p[i].left_fork);
-		printf(" %p <- 🥄 right\n\n", table->p[i].right_fork);
-	}
+    gettimeofday(&timestamp, NULL);
+    return ((timestamp.tv_sec * 1000) + (timestamp.tv_usec / 1000));
 }
 
+void    ft_usleep(int ms)
+{
+    long int    time;
+
+    time = get_time_value();
+    while (get_time_value() - time < ms)
+        usleep(100);
+}
