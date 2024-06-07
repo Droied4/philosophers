@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:29:09 by deordone          #+#    #+#             */
-/*   Updated: 2024/06/07 18:04:15 by droied           ###   ########.fr       */
+/*   Updated: 2024/06/07 20:00:26 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # define SLEEPING 2
 # define STR_THINK "\033[0;33mThinking 🤔\033[0m"
 # define THINKING 1
-# define STR_FORK "Take a fork 🍴\033[0m"
+# define STR_FORK "Take both forks 🍴\033[0m"
+# define STR_FORK2 "Relase both forks 🍴\033[0m"
 # define STR_DIE "Dying 💀\033[0m"
 
 #endif

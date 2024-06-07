@@ -13,9 +13,12 @@ int set_state(t_philo *p, char *state)
 	int time;
 	time = get_mstime();
 	
-	pthread_mutex_lock(p->printor);
-	printf("%i The philosopher 🗿 %d is %s\n", time - p->last_noodle, p->id, state);
-	pthread_mutex_unlock(p->printor);
+	if (memento_mori(p) >= 0)
+	{
+		pthread_mutex_lock(p->printor);
+		printf("%i The philosopher 🗿 %d is %s\n", time - p->last_noodle, p->id, state);
+		pthread_mutex_unlock(p->printor);
+	}
 	return (time);
 }
 
