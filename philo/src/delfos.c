@@ -23,14 +23,14 @@ static void eating(t_philo *p)
 	p->last_noodle = get_mstime();
 	p->foods++;
 	set_state(p, STR_EAT);
+	pthread_mutex_unlock(p->left_fork);
+	pthread_mutex_unlock(p->right_fork);
     usleep(p->info.time2_eat);
 }
 
 static void zzz(t_philo *p 	)
 {
 	set_state(p, STR_SLEEP);
-	pthread_mutex_unlock(p->left_fork);
-	pthread_mutex_unlock(p->right_fork);
 	usleep(p->info.time2_sleep);
 }
 
