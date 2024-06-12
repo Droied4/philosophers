@@ -19,7 +19,6 @@ static int init_spider(t_table *table)
 	{
 		if (pthread_join(p[i].thread_id, NULL) != 0)
 			return (destroy_all(table, philos + 3));
-		usleep(100);
 	}
 	return (0);
 }

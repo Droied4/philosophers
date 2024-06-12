@@ -6,11 +6,12 @@ int memento_mori(t_philo *p)
 
 	flag = 0;
 	pthread_mutex_lock(p->starvation);
+	ft_usleep(1);
 	if (*p->info.death != 0)
 		flag = -1;
 	else if ((get_mstime(p->time)) > p->info.time2_die)
 	{
-		printf("%li The philosopher 🗿 %d is %s\n", get_mstime(p->time), p->id, STR_DIE);
+		printf("%li The philosopher 🗿 [%d] is %s\n", get_mstime(p->time), p->id, STR_DIE);
 		*p->info.death = 1;
 		flag = -1;
 	}

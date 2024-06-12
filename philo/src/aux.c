@@ -23,7 +23,7 @@ void set_state(t_philo *p, char *state)
 {
 	pthread_mutex_lock(p->printor);
 	if (memento_mori(p) >= 0)
-		printf("%li The philosopher 🗿 %d is %s\n", get_mstime(p->time), p->id, state);
+		printf("%li The philosopher 🗿 [%d] is %s\n", get_mstime(p->time), p->id, state);
 	pthread_mutex_unlock(p->printor);
 }
 
