@@ -6,7 +6,7 @@ int memento_mori(t_philo *p)
 
 	flag = 0;
 	pthread_mutex_lock(p->starvation);
-	ft_usleep(1);
+	usleep(1000);
 	if (*p->info.death != 0)
 		flag = -1;
 	else if ((get_mstime(p->time)) > p->info.time2_die)
@@ -60,7 +60,7 @@ void *the_last_supper(void *arg)
         p = (t_philo *)arg;
 		p->last_noodle = get_mstime(p->time);
 		if (p->id % 2 != 0)
-			usleep(1500);
+			usleep(1000);
         while (42)
         {
 				if (memento_mori(p) < 0)

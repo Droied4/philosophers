@@ -6,12 +6,20 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:27:21 by deordone          #+#    #+#             */
-/*   Updated: 2024/06/03 13:35:44 by droied           ###   ########.fr       */
+/*   Updated: 2024/06/12 15:39:10 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 #include <stdio.h>
+
+static int one_philo(t_table *t)
+{
+	printf("0 The philosopher 🗿 [0] is %s\n", STR_THINK);
+	ft_usleep(t->info.time2_die);
+	printf("%li The philosopher 🗿 [0] is %s\n", t->info.time2_die, STR_DIE);
+	return (0);
+}
 
 int destroy_all(t_table *table, int j)
 {
@@ -41,6 +49,8 @@ int	main(int ac, char **av)
             printf("philo : invalid digit\n");
 			return (1);
 		}
+		if (table.info.n_philo == 1)
+			return (one_philo(&table));
 		init(&table); 
 	}
 	else
