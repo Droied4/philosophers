@@ -63,17 +63,11 @@ void *the_last_supper(void *arg)
 				if (memento_mori(p) < 0)
 					break ;
 				set_state(p, STR_THINK);
-				if (memento_mori(p) < 0)
-					break ;
                 if ((p->id % 2) == 0)
                 	take_forks(p, 2);
                 else 
                 	take_forks(p, 1);
-				if (memento_mori(p) < 0)
-					break ;
 				if (eating(p) < 0 || (p->info.max_eat != -1 && p->foods >= p->info.max_eat))
-					break ;
-				if (memento_mori(p) < 0)
 					break ;
 				zzz(p);
         }
