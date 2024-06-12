@@ -58,6 +58,8 @@ void *the_last_supper(void *arg)
 
         p = (t_philo *)arg;
 		p->last_noodle = get_mstime(p->time);
+		if (p->id % 2 != 0)
+			usleep(1500);
         while (42)
         {
 				if (memento_mori(p) < 0)
