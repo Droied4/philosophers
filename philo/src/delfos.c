@@ -5,13 +5,13 @@ int memento_mori(t_philo *p)
 	int flag;
 
 	flag = 0;
-	pthread_mutex_lock(p->starvation);
 	usleep(1000);
+	pthread_mutex_lock(p->starvation);
 	if (*p->info.death != 0)
 		flag = -1;
-	else if ((get_mstime(p->time)) > p->info.time2_die)
+	else if ((get_mstime(p)) > p->info.time2_die)
 	{
-		printf("%li The philosopher 🗿 [%d] is %s\n", get_mstime(p->time), p->id, STR_DIE);
+		printf("%li The philosopher 🗿 [%d] is %s\n", get_mstime(p), p->id, STR_DIE);
 		*p->info.death = 1;
 		flag = -1;
 	}
@@ -22,7 +22,7 @@ int memento_mori(t_philo *p)
 static int eating(t_philo *p)
 {
 	p->foods++;
-	p->last_noodle = get_mstime(p->time);
+	p->last_noodle = get_mstime(p);
 	set_state(p, STR_EAT);
     ft_usleep(p->info.time2_eat);
 	pthread_mutex_unlock(p->left_fork);
@@ -31,10 +31,13 @@ static int eating(t_philo *p)
 	return (0);
 }
 
-static void zzz(t_philo *p)
+static int zzz(t_philo *p)
 {
+	if (eating(p) < 0|| (p->info.max_eat != -1 && p->foods >= p->info.max_eat))
+		return (-1);
 	set_state(p, STR_SLEEP);
 	ft_usleep(p->info.time2_sleep);
+	return (0);
 }
 
 static void take_forks(t_philo *p, int i)
@@ -56,11 +59,11 @@ static void take_forks(t_philo *p, int i)
 void *the_last_supper(void *arg) 
 {
         t_philo *p;
-
+	
         p = (t_philo *)arg;
-		p->last_noodle = get_mstime(p->time);
 		if (p->id % 2 != 0)
 			usleep(1000);
+		p->last_noodle = get_mstime(p);
         while (42)
         {
 				if (memento_mori(p) < 0)
@@ -70,9 +73,8 @@ void *the_last_supper(void *arg)
                 	take_forks(p, 2);
                 else 
                 	take_forks(p, 1);
-				if (eating(p) < 0 || (p->info.max_eat != -1 && p->foods >= p->info.max_eat))
+				if (zzz(p))
 					break ;
-				zzz(p);
         }
         return (NULL);
 }

@@ -60,5 +60,7 @@ int parser(int ac, char **av, t_table *table)
     if (is_max(&info) < 0)
 		return (-1);
 	table->info = info;
+	if (table->info.n_philo <= 0)
+		return (-1);
     return (0);
 }

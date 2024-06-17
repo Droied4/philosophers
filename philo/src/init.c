@@ -12,13 +12,13 @@ static int init_spider(t_table *table)
 	while(++i < philos)
 	{
     	if (pthread_create(&(p[i].thread_id), NULL, the_last_supper, &p[i]) != 0)
-			return (destroy_all(table, philos + 3));
+			return (destroy_all(table, philos + AUX_MUTEX));
 	}
 	i = -1; 
 	while (++i < philos)
 	{
 		if (pthread_join(p[i].thread_id, NULL) != 0)
-			return (destroy_all(table, philos + 3));
+			return (destroy_all(table, philos + AUX_MUTEX));
 	}
 	return (0);
 }
@@ -32,7 +32,7 @@ static int init_philo(t_table *table)
 	i = -1;
 	table->p = malloc(sizeof(t_philo) * philos);
 	if (!table->p)
-		return (destroy_all(table, philos + 3));
+		return (destroy_all(table, philos + AUX_MUTEX));
 	while(++i < philos)
 	{
 		table->p[i].id = i;
@@ -54,7 +54,7 @@ static int init_mutex(t_table *table)
 	int philos;
 	int i;
 
-	philos = (int)table->info.n_philo + 3;
+	philos = table->info.n_philo;
 	table->f = malloc(sizeof(t_fork ) * philos);
 	if (!table->f)
 		return (destroy_all(table, -1));
