@@ -18,7 +18,7 @@ time_t    get_mstime(t_philo *p)
 		start_time = get_time_value();
 	r = get_time_value() - start_time;
     pthread_mutex_unlock(p->time);
-    return (r);
+	return (r);
 }
 
 void set_state(t_philo *p, char *state)

@@ -1,24 +1,5 @@
 #include "philosophers.h"
 
-int memento_mori(t_philo *p)
-{
-	int flag;
-
-	flag = 0;
-	usleep(1000);
-	pthread_mutex_lock(p->starvation);
-	if (*p->info.death != 0)
-		flag = -1;
-	else if ((get_mstime(p)) > p->info.time2_die)
-	{
-		printf("%li The philosopher 🗿 [%d] is %s\n", get_mstime(p), p->id, STR_DIE);
-		*p->info.death = 1;
-		flag = -1;
-	}
-	pthread_mutex_unlock(p->starvation);
-	return (flag);
-}
-
 static int eating(t_philo *p)
 {
 	p->foods++;
@@ -66,8 +47,6 @@ void *the_last_supper(void *arg)
 		p->last_noodle = get_mstime(p);
         while (42)
         {
-				if (memento_mori(p) < 0)
-					break ;
 				set_state(p, STR_THINK);
                 if ((p->id % 2) == 0)
                 	take_forks(p, 2);
