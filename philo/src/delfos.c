@@ -3,18 +3,28 @@
 static int eating(t_philo *p)
 {
 	p->foods++;
-	p->last_noodle = get_mstime(p);
+	pthread_mutex_lock(p->info.time);
+	p->last_noodle = get_mstime();
+	pthread_mutex_unlock(p->info.time);
 	set_state(p, STR_EAT);
     ft_usleep(p->info.time2_eat);
 	pthread_mutex_unlock(p->left_fork);
 	pthread_mutex_unlock(p->right_fork);
 	set_state(p, STR_FORK2);
+	pthread_mutex_lock(p->info.pleased);
+	if (p->info.max_eat != -1 && p->foods >= p->info.max_eat)
+	{
+		p->state = SATISFIED;
+		pthread_mutex_unlock(p->info.pleased);
+		return (-1);
+	}
+	pthread_mutex_unlock(p->info.pleased);
 	return (0);
 }
 
 static int zzz(t_philo *p)
 {
-	if (eating(p) < 0|| (p->info.max_eat != -1 && p->foods >= p->info.max_eat))
+	if (eating(p) < 0)
 		return (-1);
 	set_state(p, STR_SLEEP);
 	ft_usleep(p->info.time2_sleep);
@@ -44,16 +54,22 @@ void *the_last_supper(void *arg)
         p = (t_philo *)arg;
 		if (p->id % 2 != 0)
 			usleep(1000);
-		p->last_noodle = get_mstime(p);
         while (42)
-        {
-				set_state(p, STR_THINK);
-                if ((p->id % 2) == 0)
-                	take_forks(p, 2);
-                else 
-                	take_forks(p, 1);
-				if (zzz(p))
-					break ;
-        }
+		{
+			pthread_mutex_lock(p->info.starvation);
+			if (*p->info.end != 0)
+			{
+				pthread_mutex_unlock(p->info.starvation);
+				break ;
+			}
+			pthread_mutex_unlock(p->info.starvation);
+			set_state(p, STR_THINK);
+			if ((p->id % 2) == 0)
+				take_forks(p, 2);
+			else 
+				take_forks(p, 1);
+			if (zzz(p))
+				break ;
+		}
         return (NULL);
 }

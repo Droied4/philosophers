@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:28:14 by deordone          #+#    #+#             */
-/*   Updated: 2024/06/18 01:13:51 by droied           ###   ########.fr       */
+/*   Updated: 2024/06/19 13:46:12 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void *the_last_supper(void *arg);
 
 /* AUX */
 void set_state(t_philo *p, char *state);
-long    get_mstime(t_philo *p);
+time_t    get_mstime(void);
 long    get_time_value(void);
 void 	ft_usleep(int ms);
 
