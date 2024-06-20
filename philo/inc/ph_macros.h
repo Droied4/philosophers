@@ -6,12 +6,12 @@
 /*   By: deordone <deordone@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:29:09 by deordone          #+#    #+#             */
-/*   Updated: 2024/06/19 15:57:18 by droied           ###   ########.fr       */
+/*   Updated: 2024/06/20 13:06:21 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PH_MACROS_H
-#define PH_MACROS_H
+# define PH_MACROS_H
 
 # define SATISFIED 1
 # define UNSATISFIED 0
